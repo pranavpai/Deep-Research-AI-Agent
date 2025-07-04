@@ -1,0 +1,57 @@
+[project]
+name = "enhanced-deep-research"
+version = "0.1.0"
+description = "Enhanced Deep Research Agent with Clarification System"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openai-agents>=0.0.17",
+    "gradio>=5.33.1",
+    "python-dotenv>=1.1.0",
+    "pydantic>=2.11.5",
+    "sendgrid>=6.12.3",
+    "certifi>=2025.4.26",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
+include = [
+    "*.py",
+    ".env",
+    "README.md"
+]
+exclude = [
+    "__pycache__/",
+    "*.pyc",
+    ".pytest_cache/",
+    ".coverage"
+]
+
+[project.scripts]
+deep-research = "main:main"
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+    "black>=24.0.0",
+    "ruff>=0.11.13",
+    "mypy>=1.8.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.black]
+line-length = 88
+target-version = ['py312']
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
